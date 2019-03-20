@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import AssisrStarQuiz from './AssisrStarQuiz/AssisrStarQuiz';
+import React, { Component } from "react";
+import AssisrStarQuiz from "./AssisrStarQuiz/AssisrStarQuiz";
 
 class App extends Component {
-  render() {
+  public render() {
     return (
       <div className="App">
         <AssisrStarQuiz />
