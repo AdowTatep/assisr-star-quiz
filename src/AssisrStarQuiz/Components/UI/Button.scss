@@ -1,0 +1,9 @@
+.ui-button {    
+    font-size: 1.2em;
+    background-color: var(--default-foreground);
+    border: 0;
+    border-radius: var(--distance-value);
+    padding: var(--distance-value) calc(var(--distance-value)*2);
+    color: var(--default-background);
+    cursor: pointer;
+}

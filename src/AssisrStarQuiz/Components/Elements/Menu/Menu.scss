@@ -1,0 +1,23 @@
+.elem-menu {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        size: 3em;
+        transform: scale(1.5);
+        margin-bottom: var(--distance-value);
+
+        path {
+            fill: var(--default-foreground) !important;
+        }
+    }
+
+    h1 {
+        letter-spacing: 8px;
+        font-weight: normal;
+        text-align: center;
+    }
+}

@@ -4,9 +4,9 @@ import AssisrStarQuiz from "./AssisrStarQuiz/AssisrStarQuiz";
 class App extends Component {
   public render() {
     return (
-      <div className="App">
+      <React.Fragment>
         <AssisrStarQuiz />
-      </div>
+      </React.Fragment>
     );
   }
 }

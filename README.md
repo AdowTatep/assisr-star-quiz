@@ -11,7 +11,7 @@ Do you like star wars? Test yourself with this quiz!
 
 This is a fun project made using the https://swapi.co/.
 
-You have 2 minutes to answer correctly character names from star wars
+You have 2 minutes to correctly answer character names from star wars
 - Score 10 points if you answer without reading the tip
 - Score 5 points if you answer with the tip
 
@@ -29,3 +29,7 @@ In the project directory, you can run:
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Atribuitions:
+Font: [Star Jedi by Boba Fonts(Free to use)](https://www.dafont.com/star-jedi.font)
+Sound: [Darth vader by Alexander(CC BY-NC 4.0)](http://www.orangefreesounds.com/darth-vader-breathing/)
