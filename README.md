@@ -17,8 +17,6 @@ You have 2 minutes to correctly answer character names from star wars
 
 ## **How much points can you get? ⚔️**
 
----
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using ``--typescript`` argument.
 
 ## How to run
@@ -30,6 +28,6 @@ In the project directory, you can run:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Atribuitions:
-Font: [Star Jedi by Boba Fonts(Free to use)](https://www.dafont.com/star-jedi.font)
-Sound: [Darth vader by Alexander(CC BY-NC 4.0)](http://www.orangefreesounds.com/darth-vader-breathing/)
+## Attributions:
+- Font: [Star Jedi by Boba Fonts(Free to use)](https://www.dafont.com/star-jedi.font)  
+- Sound: [Darth vader by Alexander(CC BY-NC 4.0)](http://www.orangefreesounds.com/darth-vader-breathing/)
