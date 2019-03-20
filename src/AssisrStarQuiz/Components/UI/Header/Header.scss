@@ -1,7 +1,7 @@
 @mixin header($mobile) {
     display: flex;    
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
 
     @if $mobile {        
         flex-direction: column;

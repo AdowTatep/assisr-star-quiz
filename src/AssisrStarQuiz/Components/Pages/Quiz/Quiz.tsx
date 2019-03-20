@@ -1,4 +1,5 @@
 import React from "react";
+import Character from "../../Elements/Character/Character";
 import Counter from "../../Elements/Counter/Counter";
 import Header from "../../UI/Header/Header";
 import "./Quiz.scss";
@@ -10,6 +11,9 @@ export default class Quiz extends React.Component {
                 <div className="top">
                     <Header />
                     <Counter />
+                </div>
+                <div>
+                    <Character />
                 </div>
             </div>
         );

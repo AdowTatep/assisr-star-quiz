@@ -1,6 +1,8 @@
 import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 import "./AssisrStarQuiz.scss";
-import { Game } from "./Components/Pages/Game/Game";
+import Menu from "./Components/Pages/Menu/Menu";
+import Quiz from "./Components/Pages/Quiz/Quiz";
 
 export default class AssisrStarQuiz extends React.Component {
     public componentDidMount() {
@@ -13,7 +15,10 @@ export default class AssisrStarQuiz extends React.Component {
     public render() {
         return (
             <div className={`root-star-quiz`}>
-                <Game />
+                <BrowserRouter>
+                    <Route path="/" exact component={Menu} />
+                    <Route path="/quiz/" component={Quiz} />
+                </BrowserRouter>
                 <audio autoPlay loop id="sound">
                     <source src="./static/sound/darth.mp3" type="audio/mpeg" />
                 </audio>

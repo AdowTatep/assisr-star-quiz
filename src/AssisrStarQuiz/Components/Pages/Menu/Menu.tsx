@@ -4,7 +4,6 @@ import Header from "../../UI/Header/Header";
 import "./Menu.scss";
 
 interface IMenuProps {
-    onStartClick?: (event: React.MouseEvent) => void;
 }
 
 export default class Menu extends React.Component<IMenuProps> {
@@ -24,14 +23,8 @@ export default class Menu extends React.Component<IMenuProps> {
                         <li>Score 5 points if you answer with the tip</li>
                     </ul>
                 </div>
-                <Button content={"Start Game!"} onClick={this.start.bind(this)} />
+                <Button content={"Start Game!"} link="/quiz" />
             </div>
         );
-    }
-
-    private start(event: React.MouseEvent): void {
-        if (this.props.onStartClick) {
-            this.props.onStartClick(event);
-        }
     }
 }
