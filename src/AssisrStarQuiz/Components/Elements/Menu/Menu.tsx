@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../../UI/Button";
-import { ReactComponent as DarthSVG } from "./../../../Static/Svg/darth.svg";
+import Button from "../../UI/Button/Button";
+import Header from "../../UI/Header/Header";
 import "./Menu.scss";
 
 interface IMenuProps {
@@ -15,9 +15,8 @@ export default class Menu extends React.Component<IMenuProps> {
     public render() {
         return (
             <div className={`elem-menu`}>
-                <DarthSVG />
+                <Header vertical={true} scale={true} />
                 <div>
-                    <h1 className={`font-starJediSe`}>Star quiz</h1>
                     <p>Do you like star wars? Test yourself with this quiz!</p>
                     <ul>
                         <p>You have 2 minutes to correctly answer character names from star wars</p>

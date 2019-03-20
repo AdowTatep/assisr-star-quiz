@@ -1,0 +1,53 @@
+@mixin header($mobile) {
+    display: flex;    
+    align-items: center;
+    justify-content: start;
+
+    @if $mobile {        
+        flex-direction: column;
+    }
+
+    &.vertical {
+        flex-direction: column;
+        
+        svg {
+            margin-bottom: var(--distance-value);
+        }
+    }
+
+    svg {
+        size: 3em;
+
+        &.scaled {
+            transform: scale(1.5);
+        }
+
+        path {
+            fill: var(--default-foreground) !important;
+        }
+    }
+
+    h1 {
+        letter-spacing: var(--distance-value);
+        font-weight: normal;
+        text-align: center;
+
+        &.horizontal {
+            margin-left: calc(var(--distance-value)*6);
+
+            @if $mobile {
+                margin-left: initial;
+            }
+        }
+    }
+}
+
+.ui-header {
+    @include header(false);
+}
+
+@media only screen and (max-width: 600px) {
+    .ui-header {
+        @include header(true);
+    }
+}

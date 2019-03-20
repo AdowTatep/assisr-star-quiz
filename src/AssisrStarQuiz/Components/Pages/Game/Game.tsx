@@ -1,6 +1,7 @@
 import React from "react";
 import { GameStateEnum } from "../../../Enums/GameStateEnum";
 import Menu from "../../Elements/Menu/Menu";
+import Quiz from "../Quiz/Quiz";
 import "./Game.scss";
 
 interface IGameProps {
@@ -28,8 +29,11 @@ export class Game extends React.Component<IGameProps, IGameState> {
 
     // Returns the game state machine
     private getGameState(gameState: GameStateEnum): React.ReactNode {
+        // I might use react router, but state machine is more "gamey" :P
         if (gameState === GameStateEnum.Menu) {
             return <Menu onStartClick={() => this.setStateMachine(GameStateEnum.Playing)} />;
+        } else if (gameState === GameStateEnum.Playing) {
+            return <Quiz />;
         }
 
         return null;

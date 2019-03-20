@@ -10,9 +10,15 @@ html,
 body,
 #root,
 .root-star-quiz {    
+    overflow: hidden;
     height: 100%;
     background-color: var(--default-background);
     color: var(--default-foreground);
     font-family: 'Open Sans', sans-serif;
     font-size: 1.2rem;
+}
+
+.root-star-quiz {    
+    max-width: 1880px;
+    margin: 0 auto;
 }

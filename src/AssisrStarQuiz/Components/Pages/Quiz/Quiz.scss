@@ -1,0 +1,20 @@
+@mixin quiz($mobile) {
+    .top {
+        display: flex;
+        justify-content: space-between;
+        @if $mobile {            
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+.elem-quiz {
+    @include quiz(false);
+}
+
+@media only screen and (max-width: 600px) {
+    .elem-quiz {
+        @include quiz(true);        
+    }
+}
