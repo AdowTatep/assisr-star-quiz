@@ -1,5 +1,36 @@
+$twice-distance-value: calc(var(--distance-value)*2);
+
 .elem-character {
     background-color: var(--default-accent);
-    margin: calc(var(--distance-value)*2);
-    border-radius: calc(var(--distance-value)*2);
+    margin: $twice-distance-value;
+    padding: $twice-distance-value;
+    border-radius: $twice-distance-value;
+
+    .image {        
+        text-align: center;
+        margin-bottom: var(--distance-value);
+
+        img {
+            max-width: 300px;
+        }
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        input {
+            font-size: 1.2em;
+            background-color: var(--default-foreground);
+            border: 0;
+            border-radius: var(--distance-value);
+            padding: var(--distance-value);
+            color: var(--default-background);
+        }
+
+        button {
+            margin-left: $twice-distance-value;
+        }
+    }
 }

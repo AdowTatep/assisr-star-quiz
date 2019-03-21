@@ -7,6 +7,16 @@
             align-items: center;
         }
     }
+
+    .cards {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @if $mobile {
+            flex-direction: column;
+        }
+    }
 }
 
 .elem-quiz {

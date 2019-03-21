@@ -12,7 +12,8 @@ export default class Quiz extends React.Component {
                     <Header />
                     <Counter />
                 </div>
-                <div>
+                <div className="cards">
+                    <Character />
                     <Character />
                 </div>
             </div>
