@@ -1,11 +1,13 @@
 import React from "react";
+import { ICharacter } from "../../../Interfaces/ICharacter";
 import Button from "../../UI/Button/Button";
 import Modal from "../../UI/Modal/Modal";
 import AsyncImage from "../AsyncImage/AsyncImage";
 import "./Character.scss";
 
 interface ICharacterProps {
-
+    character?: ICharacter;
+    fake?: boolean;
 }
 
 interface ICharacterState {
@@ -23,7 +25,7 @@ export default class Character extends React.Component<ICharacterProps, ICharact
         return (
             <div className={`elem-character`}>
                 <div className="image">
-
+                    {this.props.character ? this.props.character.name : ""}
                 </div>
                 <div className="actions">
                     <input placeholder="Character name..." />
