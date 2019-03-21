@@ -8,7 +8,7 @@ export default class AssisrStarQuiz extends React.Component {
     public componentDidMount() {
         const audio: any = document.getElementById("sound");
         if (audio) {
-            audio.volume = 0.07;
+            audio.volume = 0.1;
         }
     }
 

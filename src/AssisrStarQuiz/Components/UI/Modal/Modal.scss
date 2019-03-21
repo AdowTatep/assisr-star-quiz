@@ -1,0 +1,18 @@
+.ui-modal {
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+
+    .content {
+        background-color: var(--default-accent);
+        margin: 15% auto;
+        padding: 20px;
+        width: 80%;
+        max-width: 800px;
+    }
+}
