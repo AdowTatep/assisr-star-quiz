@@ -23,23 +23,31 @@ export default class ImageSearchService {
         // Check if this search is cached
         if (this.cachedSearches && this.cachedSearches.length > 0) {
             const result = this.cachedSearches.find((x: any) => x.q === q);
-            link = result.link;
+            if (result) {
+                link = result.link;
+            } else {
+                // If not cached, search
+                link = await this.getLink(q, link);
+            }
         } else {
             // If not cached, search
-            const search =
-                `${googleImages}?cx=${googleImagesContext}&key=${googleImagesApiKey}&searchType=image&q=${encodeURIComponent(q)}`;
-
-            const result = await this.http.get<any>(search);
-
-            if (result && result.items[0]) {
-                link = result.items[0].link;
-
-                // If there's a result, cache it
-                this.cachedSearches.push({ q, link });
-                localStorage.setItem("searches", JSON.stringify(this.cachedSearches));
-            }
+            link = await this.getLink(q, link);
         }
 
         return link ? link : undefined;
+    }
+
+    private async getLink(q: string, link: any) {
+        const search =
+            `${googleImages}?cx=${googleImagesContext}&key=${googleImagesApiKey}&searchType=image&q=${encodeURIComponent(q)}&imgType=photo`;
+
+        const result = await this.http.get<any>(search);
+        if (result && result.items) {
+            link = result.items[Math.floor(Math.random() * 3) + 1].link;
+            // If there's a result, cache it
+            this.cachedSearches.push({ q, link });
+            localStorage.setItem("searches", JSON.stringify(this.cachedSearches));
+        }
+        return link;
     }
 }

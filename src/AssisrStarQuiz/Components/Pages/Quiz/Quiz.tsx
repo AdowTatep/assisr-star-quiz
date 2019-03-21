@@ -32,7 +32,7 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
     }
 
     public async componentDidMount() {
-        await this.loadPage(this.state.currentPage);
+        this.loadPage(this.state.currentPage);
     }
 
     public render() {
@@ -54,29 +54,30 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
     }
 
     private getCharacters(characters: ICharacter[] | undefined): React.ReactNode {
-        const charElement = (fake: boolean, char: ICharacter | undefined, index: number) => {
-            return <Character character={char} fake={fake} key={index.toString()} />;
+        const charElement = (fake: boolean, char: ICharacter | undefined, key: string) => {
+            return <Character character={char} fake={fake} key={key} onScore={this.onCorrectName.bind(this)} />;
         };
 
         // Fake it until you make it =)
         // Only show "real" characters when they're loaded
         if (characters && characters.length > 0) {
-            return characters.map((char, index) => charElement(false, char, index));
+            return characters.map((char, index) =>
+                charElement(false, char, char ? (char.name ? char.name.replace(" ", "") : index.toString()) : index.toString()));
         } else {
             // Creates an empty array, using the spread operator to fill items with "undefined"
-            return [...new Array(10)].map((char, index) => charElement(true, char, index));
+            return [...new Array(10)].map((char, index) => charElement(true, char, index.toString()));
         }
     }
 
     private async nextPage() {
         if (this.state.nextPage) {
-            await this.loadPage(this.state.currentPage + 1);
+            this.loadPage(this.state.currentPage + 1);
         }
     }
 
     private async previousPage() {
         if (this.state.previousPage) {
-            await this.loadPage(this.state.currentPage - 1);
+            this.loadPage(this.state.currentPage - 1);
         }
     }
 
@@ -90,5 +91,9 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
                 console.error("Couldn't retrieve characters");
             }
         }
+    }
+
+    private onCorrectName(score: number): void {
+        console.log(score);
     }
 }

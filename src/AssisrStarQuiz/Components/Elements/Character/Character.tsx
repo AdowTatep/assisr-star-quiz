@@ -4,16 +4,21 @@ import { ICharacter } from "../../../Interfaces/ICharacter";
 import Button from "../../UI/Button/Button";
 import Modal from "../../UI/Modal/Modal";
 import AsyncImage from "../AsyncImage/AsyncImage";
+import CharacterTip from "../CharacterTip/CharacterTip";
 import "./Character.scss";
 
 interface ICharacterProps {
     character?: ICharacter;
     fake?: boolean;
+    onScore: (score: number) => void;
 }
 
 interface ICharacterState {
     isModalOpenned: boolean;
     characterImage: string;
+    multiplier: number;
+    scoreValue: number;
+    correct: boolean;
 }
 
 export default class Character extends React.Component<ICharacterProps, ICharacterState> {
@@ -26,60 +31,107 @@ export default class Character extends React.Component<ICharacterProps, ICharact
         this.state = {
             isModalOpenned: false,
             characterImage: "",
+            multiplier: 2,
+            scoreValue: 5,
+            correct: false,
         };
     }
 
-    public async componentDidUpdate() {
-        const { imageSearchService } = this.context;
-        if (imageSearchService) {
-            // If the character is loaded, its name exists and the image wasn't loaded yet
-            if (this.props.character && this.props.character.name && !this.state.characterImage) {
-                try {
-                    // Search the character image
-                    const characterImage = await imageSearchService.query(this.props.character.name);
-                    if (characterImage) {
-                        this.setState({ characterImage });
-                    }
-                } catch {
-                    console.log("Couldn't retrieve image");
-                }
-            }
-        }
+    public async componentDidMount() {
+        this.getImageUrl();
     }
 
     public render() {
         return (
             <div className={`elem-character`}>
                 <div className="image">
-                    {this.getImage()}
+                    {this.getImage(this.state.characterImage)}
                 </div>
                 <div className="actions">
-                    <input placeholder="Character name..." />
-                    <Button content={"..."} onClick={this.openTip.bind(this)} />
+                    <input
+                        className={this.state.correct ? "correct" : ""}
+                        placeholder="Character name..."
+                        onChange={this.onInputChange.bind(this)}
+                        disabled={this.state.correct || this.props.fake} />
+                    <Button content={"..."} onClick={this.openTip.bind(this)} disabled={this.state.correct || this.props.fake} />
                 </div>
-                {this.state.isModalOpenned ? <Modal onClose={() => this.closeTip()}>{this.getTip()}</Modal> : null}
+                {this.state.isModalOpenned ?
+                    <Modal onClose={() => this.closeTip()}>{this.getTip(this.props.character, this.state.characterImage)}</Modal> : null}
             </div>
         );
     }
 
-    public getImage() {
+    private getImage(imageUrl: string) {
         // Fake it until you make it =)
-        if (this.state.characterImage) {
-            return <AsyncImage src={this.state.characterImage} />;
+        const fake = <div className="fake"></div>;
+
+        if (imageUrl) {
+            return <AsyncImage src={imageUrl} loader={fake} />;
         } else {
-            return <div className="fake"></div>;
+            return fake;
         }
     }
 
-    public getTip(): React.ReactNode {
-        return (<div>aaaaaa</div>);
+    private getTip(character: ICharacter | undefined, imageUrl: string): React.ReactNode {
+        if (character) {
+            return <CharacterTip character={character} imageComponent={this.getImage(imageUrl)} />;
+        } else {
+            return null;
+        }
     }
 
-    public openTip() {
-        this.setState({ isModalOpenned: true });
+    private openTip() {
+        this.setState({ isModalOpenned: true, multiplier: 1 });
     }
 
-    public closeTip() {
+    private closeTip() {
         this.setState({ isModalOpenned: false });
+    }
+
+    private onInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+        // Cannot score twice
+        if (event && !this.state.correct) {
+            const target = event.target;
+            if (target) {
+                // If nothing is undefined
+                if (target.value && this.props.character && this.props.character.name) {
+                    // If value is the same as the name
+                    if (target.value.trim().toLocaleLowerCase() === this.props.character.name.trim().toLocaleLowerCase()) {
+                        this.onScore();
+                    }
+                }
+            }
+        }
+    }
+
+    private onScore() {
+        if (this.props.onScore) {
+            const { multiplier, scoreValue } = this.state;
+            this.props.onScore(multiplier * scoreValue);
+            this.setState({ correct: true });
+        }
+    }
+
+    private async getImageUrl() {
+        const { imageSearchService } = this.context;
+        if (imageSearchService) {
+            // If the character is loaded, its name exists and the image wasn't loaded yet
+            if (this.props.character && this.props.character.name && !this.state.characterImage) {
+                try {
+                    // Search the character image
+                    const splittedName = this.props.character.name.split(" ");
+                    const name = splittedName.length === 1
+                        ? splittedName[0]
+                        : splittedName[0] + " " + splittedName[splittedName.length - 1];
+                    const characterImage = await imageSearchService.query(`${name} star wars`);
+                    if (characterImage) {
+                        this.setState({ characterImage });
+                    }
+                }
+                catch (ex) {
+                    console.error("Couldn't retrieve image: " + ex);
+                }
+            }
+        }
     }
 }

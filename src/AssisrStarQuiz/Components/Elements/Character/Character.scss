@@ -11,12 +11,15 @@ $twice-distance-value: calc(var(--distance-value)*2);
         margin-bottom: var(--distance-value);
 
         img {
+            object-fit: cover;
             max-width: 300px;
+            height: 350px;            
+            border-radius: $twice-distance-value;
         }
 
         .fake {
             width: 300px;
-            height: 300px;
+            height: 350px;
             background-color: var(--default-background);
             border-radius: $twice-distance-value;
             margin: $twice-distance-value auto;
@@ -35,6 +38,10 @@ $twice-distance-value: calc(var(--distance-value)*2);
             border-radius: var(--distance-value);
             padding: var(--distance-value);
             color: var(--default-background);
+
+            &.correct {
+                background-color: var(--success);
+            }
         }
 
         button {

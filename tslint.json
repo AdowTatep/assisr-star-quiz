@@ -25,7 +25,8 @@
             140
         ],
         "object-literal-sort-keys": false,
-        "no-empty-interface": false
+        "no-empty-interface": false,
+        "align": false
     },
     "rulesDirectory": []
 }

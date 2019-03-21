@@ -1,0 +1,22 @@
+.elem-characterTip {
+    .details {        
+        display: flex;
+    }
+
+    .image {
+        display: table-caption;
+
+        .elem-asyncImage {
+            display: inline-block;
+            margin-right: calc(var(--distance-value)*3);
+
+            img {
+                display: block;
+            }
+        }
+    }
+
+    .capitalize {
+        text-transform: capitalize;
+    }
+}

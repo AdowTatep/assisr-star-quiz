@@ -3,6 +3,7 @@ import "./AsyncImage.scss";
 
 interface IAsyncImageProps {
     src: string;
+    loader?: React.ReactElement;
 }
 
 interface IAsyncImageState {
@@ -47,6 +48,8 @@ export default class AsyncImage extends React.Component<IAsyncImageProps, IAsync
         if (this.state.loaded && img) {
             return <img
                 src={this.props.src} />;
+        } else if (img && !this.state.loaded && this.props.loader) {
+            return this.props.loader;
         } else {
             return null;
         }
