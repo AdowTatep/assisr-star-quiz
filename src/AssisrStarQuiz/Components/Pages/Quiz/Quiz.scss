@@ -12,10 +12,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
 
         @if $mobile {
             flex-direction: column;
         }
+    }
+
+    >.actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
     }
 }
 

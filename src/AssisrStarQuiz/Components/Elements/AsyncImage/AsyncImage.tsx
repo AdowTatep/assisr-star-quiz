@@ -1,4 +1,5 @@
 import React from "react";
+import "./AsyncImage.scss";
 
 interface IAsyncImageProps {
     src: string;
@@ -20,6 +21,8 @@ export default class AsyncImage extends React.Component<IAsyncImageProps, IAsync
     public componentDidMount() {
         const image = new Image();
 
+        // When the image downloads, set "loaded" to true
+        // so it will refresh on screen
         image.onload = () => {
             this.setState({ loaded: true });
         };
@@ -39,6 +42,8 @@ export default class AsyncImage extends React.Component<IAsyncImageProps, IAsync
 
     private getAsyncImage(): React.ReactNode {
         const img = this.state.image;
+
+        // Only display image if it has loaded
         if (this.state.loaded && img) {
             return <img
                 src={this.props.src} />;

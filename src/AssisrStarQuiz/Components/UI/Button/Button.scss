@@ -7,4 +7,11 @@
     color: var(--default-background);
     cursor: pointer;    
     text-decoration: none;
+
+    &:disabled {
+        background-color: var(--default-background);
+        cursor: no-drop;
+        color: var(--default-accent);
+        border: 1px solid var(--default-accent);
+    }
 }

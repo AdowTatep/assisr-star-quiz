@@ -3,7 +3,7 @@ import { ICharacter } from "../Interfaces/ICharacter";
 import { IPeople } from "../Interfaces/IPeople";
 import HttpService from "./HttpService";
 
-interface IListResult {
+export interface IListResult {
     characters?: ICharacter[];
     previousPage?: boolean;
     nextPage?: boolean;
@@ -21,7 +21,7 @@ export default class CharacterService {
             people = this.cachedPages[page];
         } else {
             // If not, load the page
-            people = await this.http.get<IPeople>(`${swApi}/people`);
+            people = await this.http.get<IPeople>(`${swApi}/people?page=${page + 1}`);
             if (people) {
                 // Cache it
                 this.cachedPages[page] = people;

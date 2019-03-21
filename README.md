@@ -21,12 +21,29 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## How to run
 
+**First you need to get the credentials, follow the "Credentials" topic below.**
+
 In the project directory, you can run:
 
 ### `npm start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Credentials:
+Two credentials are required for the google search to work.
+- First you need to visit: https://developers.google.com/custom-search/v1/overview and click on the "Get a key" button
+- Second you'll need a custom search engine id, for that you can visit: https://cse.google.com/cse, put "google.com" on the website box and then proceed with the creation. Then check the "Image search" and "Search the entire web" and copy the "Search engine ID" field.
+
+Then create the following file:
+```./src/AssirStarQuiz/Credentials.json```
+```json
+{
+    "googleImagesContext": "SEARCH_ENGINE_ID",
+    "googleImagesApiKey": "API_KEY"
+}
+```
+
 
 ## Attributions:
 - Font: [Star Jedi by Boba Fonts(Free to use)](https://www.dafont.com/star-jedi.font)  
