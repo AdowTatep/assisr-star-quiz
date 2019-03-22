@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import IRank from "../../../Interfaces/IRank";
 import RankService from "../../../Services/RankService";
 import Button from "../../UI/Button/Button";
@@ -32,8 +33,15 @@ export default class Finished extends React.Component<IFinishedProps, IFinishedS
     public render() {
         return (
             <div className="elem-finished">
-                <h2>Finished!</h2>
-                <h1 className="score">Your score: {this.props.score}</h1>
+                <h2>
+                    <Link to="/">
+                        <span className="oi" data-glyph="chevron-left" aria-hidden="true"></span>
+                        Finished!
+                    </Link>
+                </h2>
+                <h1 className="score">
+                    Your score: {this.props.score}
+                </h1>
                 {this.getPreviousRank()}
                 <form onSubmit={this.onSubmit.bind(this)}>
                     <p>Save your score:</p>

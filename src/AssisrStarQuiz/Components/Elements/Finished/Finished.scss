@@ -1,6 +1,16 @@
 .elem-finished {
     padding-bottom: calc(var(--distance-value)*3);
 
+    a {
+        color: var(--default-foreground);
+        text-decoration: none;
+
+        span {
+            margin-right: calc(var(--distance-value)*2);
+            vertical-align: middle;
+        }
+    }
+
     >h2 {
         margin-top: none;
     }
