@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/assisr-star-quiz/static/media/open-iconic.3cf97837.woff"
   },
   {
-    "revision": "1188d0cefd6ba86e05d8",
+    "revision": "ba770d8ecfa60c208665",
     "url": "/assisr-star-quiz/static/css/main.481dcbc4.chunk.css"
   },
   {
@@ -24,20 +24,20 @@ self.__precacheManifest = [
     "url": "/assisr-star-quiz/static/media/STJEDISE.a43e30ec.TTF"
   },
   {
-    "revision": "1188d0cefd6ba86e05d8",
-    "url": "/assisr-star-quiz/static/js/main.b38891f0.chunk.js"
+    "revision": "ba770d8ecfa60c208665",
+    "url": "/assisr-star-quiz/static/js/main.7218c5ca.chunk.js"
   },
   {
     "revision": "527eff645d8ead16666afb6931041279",
     "url": "/assisr-star-quiz/static/media/open-iconic.527eff64.otf"
   },
   {
-    "revision": "93cc7aa654ae36b0828716f5ec3159cd",
-    "url": "/assisr-star-quiz/static/media/open-iconic.93cc7aa6.ttf"
-  },
-  {
     "revision": "47151e87c5a8666791a91007de4962da",
     "url": "/assisr-star-quiz/static/media/open-iconic.47151e87.eot"
+  },
+  {
+    "revision": "93cc7aa654ae36b0828716f5ec3159cd",
+    "url": "/assisr-star-quiz/static/media/open-iconic.93cc7aa6.ttf"
   },
   {
     "revision": "eca2c26759a009a4a9361151efe99e74",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/assisr-star-quiz/static/css/2.46a88d9d.chunk.css"
   },
   {
-    "revision": "948e890c27c97ec4cfe89cce749b6f0f",
+    "revision": "61075d4a4b06822f383016eefc27ec73",
     "url": "/assisr-star-quiz/index.html"
   }
 ];
