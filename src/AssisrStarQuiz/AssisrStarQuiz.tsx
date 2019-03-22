@@ -32,7 +32,7 @@ export default class AssisrStarQuiz extends React.Component<IAssisrStarQuizProps
         return (
             <div className={`root-star-quiz`}>
                 <QuizContext.Provider value={this.state.quizContext}>
-                    <BrowserRouter>
+                    <BrowserRouter basename={process.env.PUBLIC_URL}>
                         <Route path="/" exact component={Menu} />
                         <Route path="/quiz/" component={Quiz} />
                     </BrowserRouter>

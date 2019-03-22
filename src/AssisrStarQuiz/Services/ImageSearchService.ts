@@ -71,7 +71,9 @@ export default class ImageSearchService {
 
         const result = await this.http.get<any>(search);
         if (result && result.items) {
-            link = result.items[0].link;
+            link = result.items.length === 0
+                ? result.items[0].link
+                : result.items[Math.floor(Math.random() * (2 - 0 + 1) + 0)].link; // Randomize between first 3 numbers
         }
 
         return link;
@@ -90,7 +92,9 @@ export default class ImageSearchService {
         });
 
         if (result && result.value) {
-            link = result.value[0].contentUrl;
+            link = result.value.length === 0
+                ? result.value[0].contentUrl
+                : result.value[Math.floor(Math.random() * (2 - 0 + 1) + 0)].contentUrl; // Randomize between first 3 numbers
         }
 
         return link;
