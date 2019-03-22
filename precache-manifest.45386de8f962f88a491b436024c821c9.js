@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/assisr-star-quiz/static/media/open-iconic.3cf97837.woff"
   },
   {
-    "revision": "ba770d8ecfa60c208665",
+    "revision": "32971a06f353bcc73e65",
     "url": "/assisr-star-quiz/static/css/main.481dcbc4.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/assisr-star-quiz/static/media/STJEDISE.a43e30ec.TTF"
   },
   {
-    "revision": "ba770d8ecfa60c208665",
-    "url": "/assisr-star-quiz/static/js/main.7218c5ca.chunk.js"
+    "revision": "32971a06f353bcc73e65",
+    "url": "/assisr-star-quiz/static/js/main.7046eb33.chunk.js"
   },
   {
     "revision": "527eff645d8ead16666afb6931041279",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/assisr-star-quiz/static/css/2.46a88d9d.chunk.css"
   },
   {
-    "revision": "61075d4a4b06822f383016eefc27ec73",
+    "revision": "0e17971898f5e65428ef816cd717af80",
     "url": "/assisr-star-quiz/index.html"
   }
 ];
