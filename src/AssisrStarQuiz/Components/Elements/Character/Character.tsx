@@ -95,8 +95,10 @@ export default class Character extends React.Component<ICharacterProps, ICharact
             if (target) {
                 // If nothing is undefined
                 if (target.value && this.props.character && this.props.character.name) {
+                    // I don't actually check if the text is EXACTLY like the other, just a bit similar
+                    const processString = (str: string) => str.trim().toLocaleLowerCase().replace("-", "").replace(" ", "");
                     // If value is the same as the name
-                    if (target.value.trim().toLocaleLowerCase() === this.props.character.name.trim().toLocaleLowerCase()) {
+                    if (processString(target.value) === processString(this.props.character.name)) {
                         this.onScore();
                     }
                 }
