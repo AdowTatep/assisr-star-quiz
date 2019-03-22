@@ -40,18 +40,25 @@ export default class ImageSearchService {
         let link: string | undefined;
 
         // Randomly choose if should search on bing
-        // Bing has better results, but has harsh request limit
+        // Bing has better results, but has harsh request limit so I only choose it sometimes
         if (Math.random() > 0.7) {
             link = await this.searchOnBing(q);
         }
 
         if (!link) {
             link = await this.searchOnGoogle(q);
+
+            // If google search failed, fallback to bing
+            if (!link) {
+                link = await this.searchOnBing(q);
+            }
         }
 
-        // If there's a result, cache it
-        this.cachedSearches.push({ q, link });
-        localStorage.setItem("searches", JSON.stringify(this.cachedSearches));
+        // If there's a result(it may not have =( ), cache it
+        if (link) {
+            this.cachedSearches.push({ q, link });
+            localStorage.setItem("searches", JSON.stringify(this.cachedSearches));
+        }
 
         return link;
     }
