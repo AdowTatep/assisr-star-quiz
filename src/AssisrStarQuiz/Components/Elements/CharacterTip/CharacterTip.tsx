@@ -2,8 +2,8 @@ import React from "react";
 import { QuizContext } from "../../../Contexts/QuizContext";
 import { ICharacter } from "../../../Interfaces/ICharacter";
 import CharacterService from "../../../Services/CharacterService";
-import "./CharacterTip.scss";
 import Loader from "../../UI/Loader/Loader";
+import "./CharacterTip.scss";
 
 interface ICharacterTipProps {
     character: ICharacter;
