@@ -34,13 +34,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Two credentials are required for the google search to work.
 - First you need to visit: https://developers.google.com/custom-search/v1/overview and click on the "Get a key" button
 - Second you'll need a custom search engine id, for that you can visit: https://cse.google.com/cse, put "google.com" on the website box and then proceed with the creation. Then check the "Image search" and "Search the entire web" and copy the "Search engine ID" field.
+- Third, I am also using bing as an option, so you have to go to the azure portal and create a "Bing Search v7" resource, after you created it, go to its options and copy one of its "keys", if you don't know how, check out: https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account.
 
 Then create the following file:
 ```./src/AssirStarQuiz/Credentials.json```
 ```json
 {
     "googleImagesContext": "SEARCH_ENGINE_ID",
-    "googleImagesApiKey": "API_KEY"
+	"googleImagesApiKey": "API_KEY",
+    "bingSubscriptionKey": "BING_SEARCH_KEY"
 }
 ```
 
