@@ -3,6 +3,7 @@ import { QuizContext } from "../../../Contexts/QuizContext";
 import { ICharacter } from "../../../Interfaces/ICharacter";
 import CharacterService from "../../../Services/CharacterService";
 import "./CharacterTip.scss";
+import Loader from "../../UI/Loader/Loader";
 
 interface ICharacterTipProps {
     character: ICharacter;
@@ -46,15 +47,17 @@ export default class CharacterTip extends React.Component<ICharacterTipProps, IC
                     </div>
                     <div>
                         <h1>Details</h1>
-                        <p>Specie: {this.state.specieName ? this.state.specieName : "Loading"}</p>
+                        {this.state.specieName ? <p>Specie: {this.state.specieName}</p> : <div className="loading">Specie: <Loader /></div>}
                         <p>Height: {this.props.character.height}</p>
                         <p className="capitalize">Hair: {this.props.character.hair_color}</p>
-                        <p>Planet: {this.state.planetName ? this.state.planetName : "Loading"}</p>
+                        {this.state.planetName ? <p>Planet: {this.state.planetName}</p> : <div className="loading">Planet: <Loader /></div>}
                     </div>
                 </div>
-                <p>Movies: {this.state.filmNames ? this.state.filmNames : "Loading"}</p>
+                {this.state.filmNames ? <p>Movies: {this.state.filmNames}</p> : <div className="loading">Movies: <Loader /></div>}
                 {this.props.character.vehicles && this.props.character.vehicles.length > 0 ?
-                    <p>Vehicles: {this.state.vehicleNames ? this.state.vehicleNames : "Loading"}</p> : null}
+                    this.state.vehicleNames
+                        ? <p>Vehicles: {this.state.vehicleNames}</p> : <div className="loading">Vehicles: <Loader /></div>
+                    : null}
             </div>
         );
     }

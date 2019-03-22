@@ -2,6 +2,7 @@ import React from "react";
 import { QuizContext } from "../../../Contexts/QuizContext";
 import { ICharacter } from "../../../Interfaces/ICharacter";
 import Button from "../../UI/Button/Button";
+import Loader from "../../UI/Loader/Loader";
 import Modal from "../../UI/Modal/Modal";
 import AsyncImage from "../AsyncImage/AsyncImage";
 import CharacterTip from "../CharacterTip/CharacterTip";
@@ -67,7 +68,7 @@ export default class Character extends React.Component<ICharacterProps, ICharact
 
     private getImage(imageUrl: string) {
         // Fake it until you make it =)
-        const fake = <div className="fake"></div>;
+        const fake = <div className="fake"><Loader></Loader></div>;
 
         if (imageUrl) {
             return <AsyncImage src={imageUrl} loader={fake} />;
