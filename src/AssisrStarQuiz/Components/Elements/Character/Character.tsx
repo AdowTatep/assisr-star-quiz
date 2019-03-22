@@ -10,7 +10,8 @@ import "./Character.scss";
 interface ICharacterProps {
     character?: ICharacter;
     fake?: boolean;
-    onScore: (score: number) => void;
+    correct?: boolean;
+    onScore: (score: number, character: ICharacter) => void;
 }
 
 interface ICharacterState {
@@ -19,6 +20,7 @@ interface ICharacterState {
     multiplier: number;
     scoreValue: number;
     correct: boolean;
+    nameInput: string;
 }
 
 export default class Character extends React.Component<ICharacterProps, ICharacterState> {
@@ -33,7 +35,8 @@ export default class Character extends React.Component<ICharacterProps, ICharact
             characterImage: "",
             multiplier: 2,
             scoreValue: 5,
-            correct: false,
+            correct: this.props.correct ? this.props.correct : false,
+            nameInput: "",
         };
     }
 
@@ -52,6 +55,7 @@ export default class Character extends React.Component<ICharacterProps, ICharact
                         className={this.state.correct ? "correct" : ""}
                         placeholder="Character name..."
                         onChange={this.onInputChange.bind(this)}
+                        value={this.props.correct ? (this.props.character ? this.props.character.name : "") : this.state.nameInput}
                         disabled={this.state.correct || this.props.fake} />
                     <Button content={"..."} onClick={this.openTip.bind(this)} disabled={this.state.correct || this.props.fake} />
                 </div>
@@ -102,14 +106,15 @@ export default class Character extends React.Component<ICharacterProps, ICharact
                         this.onScore();
                     }
                 }
+                this.setState({ nameInput: target.value });
             }
         }
     }
 
     private onScore() {
-        if (this.props.onScore) {
+        if (this.props.onScore && this.props.character) {
             const { multiplier, scoreValue } = this.state;
-            this.props.onScore(multiplier * scoreValue);
+            this.props.onScore(multiplier * scoreValue, this.props.character);
             this.setState({ correct: true });
         }
     }

@@ -18,6 +18,7 @@ interface IQuizProps {
 
 interface IQuizState {
     characters?: ICharacter[];
+    correctCharacters: string[];
     previousPage?: boolean;
     nextPage?: boolean;
     currentPage: number;
@@ -33,6 +34,7 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
         super(props);
         this.state = {
             characters: undefined,
+            correctCharacters: new Array<string>(),
             currentPage: 0,
             totalScore: 0,
             finished: false,
@@ -70,7 +72,12 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
 
     private getCharacters(characters: ICharacter[] | undefined): React.ReactNode {
         const charElement = (fake: boolean, char: ICharacter | undefined, key: string) => {
-            return <Character character={char} fake={fake} key={key} onScore={this.onCorrectName.bind(this)} />;
+            return <Character
+                character={char}
+                fake={fake}
+                key={key}
+                correct={this.state.correctCharacters.some((x) => char !== undefined && x === char.name)}
+                onScore={this.onCorrectName.bind(this)} />;
         };
 
         // Fake it until you make it =)
@@ -108,9 +115,11 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
         }
     }
 
-    private onCorrectName(score: number): void {
-        if (!this.state.finished) {
-            this.setState({ totalScore: this.state.totalScore + score });
+    private onCorrectName(score: number, character: ICharacter): void {
+        if (!this.state.finished && character.name) {
+            const { correctCharacters } = this.state;
+            correctCharacters.push(character.name);
+            this.setState({ totalScore: this.state.totalScore + score, correctCharacters });
         }
     }
 

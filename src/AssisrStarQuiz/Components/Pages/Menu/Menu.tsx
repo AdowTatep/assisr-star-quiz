@@ -40,7 +40,8 @@ export default class Menu extends React.Component<IMenuProps> {
     }
 
     private getRanking(): React.ReactNode {
-        const ranking = RankService.getRanks();
+        let ranking = RankService.getRanks();
+        ranking = ranking.sort((a, b) => (b.score ? b.score : 0) - (a.score ? a.score : 0));
         if (ranking && ranking.length > 0) {
             const ranks = () => ranking.map((rank, key) => <li key={key}>{rank.score}: {rank.name} - {rank.email}</li>);
             return (
