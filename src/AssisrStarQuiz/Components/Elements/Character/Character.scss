@@ -32,13 +32,6 @@ $twice-distance-value: calc(var(--distance-value)*2);
         justify-content: center;
 
         input {
-            font-size: 1.2em;
-            background-color: var(--default-foreground);
-            border: 0;
-            border-radius: var(--distance-value);
-            padding: var(--distance-value);
-            color: var(--default-background);
-
             &.correct {
                 background-color: var(--success);
             }

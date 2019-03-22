@@ -6,6 +6,15 @@
             flex-direction: column;
             align-items: center;
         }
+
+        .scoring {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            >* {
+                margin: 0 calc(var(--distance-value)*3);
+            }
+        }
     }
 
     .cards {

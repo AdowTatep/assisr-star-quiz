@@ -1,11 +1,14 @@
 import React from "react";
 import { QuizContext } from "../../../Contexts/QuizContext";
 import { ICharacter } from "../../../Interfaces/ICharacter";
-import { IListResult } from "../../../Services/CharacterService";
+import IRank from "../../../Interfaces/IRank";
 import Character from "../../Elements/Character/Character";
 import Counter from "../../Elements/Counter/Counter";
+import Finished from "../../Elements/Finished/Finished";
 import Button from "../../UI/Button/Button";
 import Header from "../../UI/Header/Header";
+import Modal from "../../UI/Modal/Modal";
+import { countdownLimitInSeconds } from "./../../../Config.json";
 import "./Quiz.scss";
 
 interface IQuizProps {
@@ -17,6 +20,8 @@ interface IQuizState {
     previousPage?: boolean;
     nextPage?: boolean;
     currentPage: number;
+    totalScore: number;
+    finished: boolean;
 }
 
 export default class Quiz extends React.Component<IQuizProps, IQuizState> {
@@ -28,6 +33,8 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
         this.state = {
             characters: undefined,
             currentPage: 0,
+            totalScore: 0,
+            finished: false,
         };
     }
 
@@ -40,7 +47,10 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
             <div className={`elem-quiz`}>
                 <div className="top">
                     <Header />
-                    <Counter />
+                    <div className="scoring">
+                        <h1>{this.state.totalScore}</h1>
+                        <Counter limitInSeconds={countdownLimitInSeconds} onLimit={this.timerFinished.bind(this)} />
+                    </div>
                 </div>
                 <div className="actions">
                     <Button content="<< Previous page" onClick={this.previousPage.bind(this)} disabled={!this.state.previousPage} />
@@ -49,6 +59,10 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
                 <div className="cards">
                     {this.getCharacters(this.state.characters)}
                 </div>
+                {this.state.finished ?
+                    <Modal>
+                        <Finished score={this.state.totalScore} onSubmit={this.rankSubmit.bind(this)} />
+                    </Modal> : null}
             </div>
         );
     }
@@ -94,6 +108,16 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
     }
 
     private onCorrectName(score: number): void {
-        console.log(score);
+        if (!this.state.finished) {
+            this.setState({ totalScore: this.state.totalScore + score });
+        }
+    }
+
+    private timerFinished(): void {
+        this.setState({ finished: true });
+    }
+
+    private rankSubmit(rank: IRank): void {
+
     }
 }

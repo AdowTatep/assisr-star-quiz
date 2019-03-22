@@ -129,8 +129,7 @@ export default class Character extends React.Component<ICharacterProps, ICharact
                     if (characterImage) {
                         this.setState({ characterImage });
                     }
-                }
-                catch (ex) {
+                } catch (ex) {
                     console.error("Couldn't retrieve image: " + ex);
                 }
             }

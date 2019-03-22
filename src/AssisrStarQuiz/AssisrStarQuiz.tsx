@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import "./AssisrStarQuiz.scss";
 import Menu from "./Components/Pages/Menu/Menu";
 import Quiz from "./Components/Pages/Quiz/Quiz";
-import { QuizContext, IQuizContext, quiz } from "./Contexts/QuizContext";
+import { IQuizContext, quiz, QuizContext } from "./Contexts/QuizContext";
 
 interface IAssisrStarQuizProps {
 }

@@ -2,7 +2,7 @@ import React from "react";
 import "./Modal.scss";
 
 interface IModalProps {
-    onClose: (event: React.MouseEvent) => void;
+    onClose?: (event: React.MouseEvent) => void;
 }
 
 export default class Modal extends React.Component<IModalProps> {

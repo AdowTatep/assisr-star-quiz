@@ -21,3 +21,12 @@ body,
     max-width: 1880px;
     margin: 0 auto;
 }
+
+input {
+    font-size: 1.2em;
+    background-color: var(--default-foreground);
+    border: 0;
+    border-radius: var(--distance-value);
+    padding: var(--distance-value);
+    color: var(--default-background);
+}

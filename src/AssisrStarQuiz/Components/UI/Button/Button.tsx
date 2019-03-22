@@ -7,6 +7,7 @@ interface IButtonProps {
     onClick?: (event: React.MouseEvent) => void;
     link?: string;
     disabled?: boolean;
+    type?: string;
 }
 
 export default class Button extends React.Component<IButtonProps> {
@@ -23,7 +24,7 @@ export default class Button extends React.Component<IButtonProps> {
             );
         } else {
             return (
-                <button className={`ui-button`} onClick={this.onClick.bind(this)} disabled={this.props.disabled}>
+                <button className={`ui-button`} type={this.props.type} onClick={this.onClick.bind(this)} disabled={this.props.disabled}>
                     {this.props.content}
                 </button>
             );

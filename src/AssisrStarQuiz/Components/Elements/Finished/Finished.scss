@@ -1,0 +1,26 @@
+.elem-finished {
+    padding-bottom: calc(var(--distance-value)*3);
+
+    >h2 {
+        margin-top: none;
+    }
+
+    .score {
+        text-align: center;
+    }
+
+    form {
+        margin: calc(var(--distance-value)*6);
+ 
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: calc(var(--distance-value)*2);
+        }
+
+        .formErrors {
+            color: var(--danger);
+            font-size: 0.8em;
+        }
+    }
+}
