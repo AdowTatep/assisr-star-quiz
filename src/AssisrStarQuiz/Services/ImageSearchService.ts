@@ -1,5 +1,5 @@
-import { googleImages } from "../Config.json";
-import { googleImagesApiKey, googleImagesContext } from "../Credentials.json";
+import { bingImages, googleImages } from "../Config.json";
+import { bingSubscriptionKey, googleImagesApiKey, googleImagesContext } from "../Credentials.json";
 import HttpService from "./HttpService";
 
 export default class ImageSearchService {
@@ -27,27 +27,65 @@ export default class ImageSearchService {
                 link = result.link;
             } else {
                 // If not cached, search
-                link = await this.getLink(q, link);
+                link = await this.getLink(q);
             }
         } else {
             // If not cached, search
-            link = await this.getLink(q, link);
+            link = await this.getLink(q);
         }
 
-        return link ? link : undefined;
+        return link;
+    }
+    public async getLink(q: string): Promise<string | undefined> {
+        let link: string | undefined;
+
+        // Randomly choose if should search on bing
+        // Bing has better results, but has harsh request limit
+        if (Math.random() > 0.7) {
+            link = await this.searchOnBing(q);
+        }
+
+        if (!link) {
+            link = await this.searchOnGoogle(q);
+        }
+
+        // If there's a result, cache it
+        this.cachedSearches.push({ q, link });
+        localStorage.setItem("searches", JSON.stringify(this.cachedSearches));
+
+        return link;
     }
 
-    private async getLink(q: string, link: any) {
+    private async searchOnGoogle(q: string): Promise<string | undefined> {
+        let link: string | undefined;
+
         const search =
             `${googleImages}?cx=${googleImagesContext}&key=${googleImagesApiKey}&searchType=image&q=${encodeURIComponent(q)}&imgType=photo`;
 
         const result = await this.http.get<any>(search);
         if (result && result.items) {
-            link = result.items[Math.floor(Math.random() * 3) + 1].link;
-            // If there's a result, cache it
-            this.cachedSearches.push({ q, link });
-            localStorage.setItem("searches", JSON.stringify(this.cachedSearches));
+            link = result.items[0].link;
         }
+
+        return link;
+    }
+
+    private async searchOnBing(q: string): Promise<string | undefined> {
+        let link: string | undefined;
+
+        const search =
+            `${bingImages}?q=${encodeURIComponent(q)}&count=1`;
+
+        const result = await this.http.get<any>(search, {
+            headers: {
+                "Ocp-Apim-Subscription-Key": bingSubscriptionKey,
+            },
+        });
+
+        if (result && result.value) {
+            link = result.value[0].contentUrl;
+        }
+
         return link;
     }
 }
