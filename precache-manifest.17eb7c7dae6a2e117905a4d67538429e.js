@@ -32,12 +32,12 @@ self.__precacheManifest = [
     "url": "/assisr-star-quiz/static/media/open-iconic.527eff64.otf"
   },
   {
-    "revision": "47151e87c5a8666791a91007de4962da",
-    "url": "/assisr-star-quiz/static/media/open-iconic.47151e87.eot"
-  },
-  {
     "revision": "93cc7aa654ae36b0828716f5ec3159cd",
     "url": "/assisr-star-quiz/static/media/open-iconic.93cc7aa6.ttf"
+  },
+  {
+    "revision": "47151e87c5a8666791a91007de4962da",
+    "url": "/assisr-star-quiz/static/media/open-iconic.47151e87.eot"
   },
   {
     "revision": "eca2c26759a009a4a9361151efe99e74",
