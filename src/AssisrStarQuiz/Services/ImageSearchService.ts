@@ -85,18 +85,28 @@ export default class ImageSearchService {
         const search =
             `${bingImages}?q=${encodeURIComponent(q)}&count=1`;
 
-        const result = await this.http.get<any>(search, {
-            headers: {
-                "Ocp-Apim-Subscription-Key": bingSubscriptionKey,
-            },
-        });
+        try {
+            const result = await this.http.get<any>(search, {
+                headers: {
+                    "Ocp-Apim-Subscription-Key": bingSubscriptionKey,
+                },
+            });
 
-        if (result && result.value) {
-            link = result.value.length === 0
-                ? result.value[0].contentUrl
-                : result.value[Math.floor(Math.random() * (2 - 0 + 1) + 0)].contentUrl; // Randomize between first 3 numbers
+            if (result && result.value) {
+                link = result.value.length === 0
+                    ? result.value[0].contentUrl
+                    : result.value[Math.floor(Math.random() * (2 - 0 + 1) + 0)].contentUrl; // Randomize between first 3 numbers
+            }
+
+            return link;
+        } catch {
+            // If bing returns "too many requests"
+            // Try again in 1 to 2 seconds
+            return new Promise((resolve, reject) => {
+                setTimeout(async () => {
+                    resolve(await this.searchOnBing(q));
+                }, Math.random() * (2000 - 1000 + 1) + 1000);
+            });
         }
-
-        return link;
     }
 }
