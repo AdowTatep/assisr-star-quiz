@@ -1,8 +1,8 @@
 import React from "react";
 import IRank from "../../../Interfaces/IRank";
+import RankService from "../../../Services/RankService";
 import Button from "../../UI/Button/Button";
 import "./Finished.scss";
-import RankService from "../../../Services/RankService";
 
 interface IFinishedProps {
     score: number;
@@ -59,7 +59,7 @@ export default class Finished extends React.Component<IFinishedProps, IFinishedS
                         ></input>
                     </div>
                     <div className="actions">
-                        <Button type={"submit"} disabled={!this.state.validation.valid && this.state.validation.dirty} content={"Save"} />
+                        <Button type={"submit"} disabled={!this.state.validation.valid && this.state.validation.dirty}>Save</Button>
                     </div>
                 </form>
             </div>

@@ -6,6 +6,11 @@
             flex-direction: column;
             align-items: center;
         }
+        
+        a {
+            text-decoration: none;
+            color: var(--default-foreground);
+        }
 
         .scoring {
             display: flex;
@@ -13,6 +18,10 @@
             align-items: center;
             >* {
                 margin: 0 calc(var(--distance-value)*3);
+            }
+
+            span {
+                margin-right: calc(var(--distance-value)*2);
             }
         }
     }

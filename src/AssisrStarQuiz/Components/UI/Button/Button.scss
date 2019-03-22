@@ -14,4 +14,9 @@
         color: var(--default-accent);
         border: 1px solid var(--default-accent);
     }
+
+    span.oi {
+        vertical-align: sub;
+        margin: 0 var(--distance-value);
+    }
 }

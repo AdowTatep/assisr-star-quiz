@@ -21,9 +21,10 @@ export default class AssisrStarQuiz extends React.Component<IAssisrStarQuizProps
     }
 
     public componentDidMount() {
-        const audio: any = document.getElementById("sound");
+        const audio = (document.getElementById("sound") as HTMLAudioElement);
         if (audio) {
-            audio.volume = 0.1;
+            audio.volume = 0.07;
+            audio.play();
         }
     }
 

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Button.scss";
 
 interface IButtonProps {
-    content?: string;
     onClick?: (event: React.MouseEvent) => void;
     link?: string;
     disabled?: boolean;
@@ -19,13 +18,13 @@ export default class Button extends React.Component<IButtonProps> {
         if (this.props.link) {
             return (
                 <Link className={`ui-button`} to={this.props.link}>
-                    {this.props.content}
+                    {this.props.children}
                 </Link>
             );
         } else {
             return (
                 <button className={`ui-button`} type={this.props.type} onClick={this.onClick.bind(this)} disabled={this.props.disabled}>
-                    {this.props.content}
+                    {this.props.children}
                 </button>
             );
         }

@@ -1,10 +1,10 @@
 import React from "react";
 import { QuizContext } from "../../../Contexts/QuizContext";
 import { ICharacter } from "../../../Interfaces/ICharacter";
+import RankService from "../../../Services/RankService";
 import Button from "../../UI/Button/Button";
 import Header from "../../UI/Header/Header";
 import "./Menu.scss";
-import RankService from "../../../Services/RankService";
 
 interface IMenuProps {
 }
@@ -34,7 +34,7 @@ export default class Menu extends React.Component<IMenuProps> {
                     </ul>
                 </div>
                 {this.getRanking()}
-                <Button content={"Start Game!"} link="/quiz" />
+                <Button link="/quiz">Start Game!</Button>
             </div>
         );
     }

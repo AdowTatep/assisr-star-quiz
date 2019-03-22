@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { QuizContext } from "../../../Contexts/QuizContext";
 import { ICharacter } from "../../../Interfaces/ICharacter";
 import IRank from "../../../Interfaces/IRank";
@@ -49,15 +50,34 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
         return (
             <div className={`elem-quiz`}>
                 <div className="top">
-                    <Header />
+                    <Link to="/">
+                        <Header />
+                    </Link>
                     <div className="scoring">
-                        <h1>{this.state.totalScore}</h1>
+                        <h1>
+                            <span className="oi" data-glyph="star" aria-hidden="true"></span>
+                            {this.state.totalScore}
+                        </h1>
                         <Counter limitInSeconds={countdownLimitInSeconds} onLimit={this.timerFinished.bind(this)} />
                     </div>
                 </div>
                 <div className="actions">
-                    <Button content="<< Previous page" onClick={this.previousPage.bind(this)} disabled={!this.state.previousPage} />
-                    <Button content="Next page >>" onClick={this.nextPage.bind(this)} disabled={!this.state.nextPage} />
+                    <Button
+                        onClick={this.previousPage.bind(this)}
+                        disabled={!this.state.previousPage}>
+                        <span>
+                            <span className="oi" data-glyph="chevron-left" aria-hidden="true"></span>
+                            Previous page
+                        </span>
+                    </Button>
+                    <Button
+                        onClick={this.nextPage.bind(this)}
+                        disabled={!this.state.nextPage}>
+                        <span>
+                            Next page
+                            <span className="oi" data-glyph="chevron-right" aria-hidden="true"></span>
+                        </span>
+                    </Button>
                 </div>
                 <div className="cards">
                     {this.getCharacters(this.state.characters)}

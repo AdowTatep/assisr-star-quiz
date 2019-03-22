@@ -57,7 +57,7 @@ export default class Character extends React.Component<ICharacterProps, ICharact
                         onChange={this.onInputChange.bind(this)}
                         value={this.props.correct ? (this.props.character ? this.props.character.name : "") : this.state.nameInput}
                         disabled={this.state.correct || this.props.fake} />
-                    <Button content={"..."} onClick={this.openTip.bind(this)} disabled={this.state.correct || this.props.fake} />
+                    <Button onClick={this.openTip.bind(this)} disabled={this.state.correct || this.props.fake}>...</Button>
                 </div>
                 {this.state.isModalOpenned ?
                     <Modal onClose={() => this.closeTip()}>{this.getTip(this.props.character, this.state.characterImage)}</Modal> : null}
