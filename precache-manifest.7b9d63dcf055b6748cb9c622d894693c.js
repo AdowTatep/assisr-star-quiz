@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/assisr-star-quiz/static/media/open-iconic.3cf97837.woff"
   },
   {
-    "revision": "32971a06f353bcc73e65",
-    "url": "/assisr-star-quiz/static/css/main.481dcbc4.chunk.css"
+    "revision": "c102a52cc80601b497eb",
+    "url": "/assisr-star-quiz/static/css/main.6ce16f11.chunk.css"
   },
   {
     "revision": "da06b5bc691a159664fc",
@@ -16,39 +16,39 @@ self.__precacheManifest = [
     "url": "/assisr-star-quiz/static/media/darth.8ad90b21.svg"
   },
   {
-    "revision": "8867b54c0de169565dab",
-    "url": "/assisr-star-quiz/static/js/2.fa90a413.chunk.js"
+    "revision": "7bda9d2c2a8476ce6750",
+    "url": "/assisr-star-quiz/static/js/2.12cd1b4b.chunk.js"
   },
   {
     "revision": "a43e30ecbe0c29409e920eebc645e746",
     "url": "/assisr-star-quiz/static/media/STJEDISE.a43e30ec.TTF"
   },
   {
-    "revision": "32971a06f353bcc73e65",
-    "url": "/assisr-star-quiz/static/js/main.7046eb33.chunk.js"
+    "revision": "c102a52cc80601b497eb",
+    "url": "/assisr-star-quiz/static/js/main.249c4e63.chunk.js"
   },
   {
     "revision": "527eff645d8ead16666afb6931041279",
     "url": "/assisr-star-quiz/static/media/open-iconic.527eff64.otf"
   },
   {
-    "revision": "47151e87c5a8666791a91007de4962da",
-    "url": "/assisr-star-quiz/static/media/open-iconic.47151e87.eot"
-  },
-  {
     "revision": "93cc7aa654ae36b0828716f5ec3159cd",
     "url": "/assisr-star-quiz/static/media/open-iconic.93cc7aa6.ttf"
+  },
+  {
+    "revision": "47151e87c5a8666791a91007de4962da",
+    "url": "/assisr-star-quiz/static/media/open-iconic.47151e87.eot"
   },
   {
     "revision": "eca2c26759a009a4a9361151efe99e74",
     "url": "/assisr-star-quiz/static/media/open-iconic.eca2c267.svg"
   },
   {
-    "revision": "8867b54c0de169565dab",
+    "revision": "7bda9d2c2a8476ce6750",
     "url": "/assisr-star-quiz/static/css/2.46a88d9d.chunk.css"
   },
   {
-    "revision": "0e17971898f5e65428ef816cd717af80",
+    "revision": "cba02fd5c4bd9b0359509c17c879cac1",
     "url": "/assisr-star-quiz/index.html"
   }
 ];

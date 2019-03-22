@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/assisr-star-quiz/precache-manifest.45386de8f962f88a491b436024c821c9.js"
+  "/assisr-star-quiz/precache-manifest.7b9d63dcf055b6748cb9c622d894693c.js"
 );
 
 workbox.clientsClaim();
