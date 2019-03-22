@@ -2,6 +2,7 @@ import React from "react";
 import { QuizContext } from "../../../Contexts/QuizContext";
 import { ICharacter } from "../../../Interfaces/ICharacter";
 import IRank from "../../../Interfaces/IRank";
+import RankService from "../../../Services/RankService";
 import Character from "../../Elements/Character/Character";
 import Counter from "../../Elements/Counter/Counter";
 import Finished from "../../Elements/Finished/Finished";
@@ -12,7 +13,7 @@ import { countdownLimitInSeconds } from "./../../../Config.json";
 import "./Quiz.scss";
 
 interface IQuizProps {
-
+    history?: any;
 }
 
 interface IQuizState {
@@ -118,6 +119,9 @@ export default class Quiz extends React.Component<IQuizProps, IQuizState> {
     }
 
     private rankSubmit(rank: IRank): void {
-
+        RankService.insertRank(rank);
+        if (this.props.history) {
+            this.props.history.push("/");
+        }
     }
 }

@@ -4,6 +4,7 @@ import { ICharacter } from "../../../Interfaces/ICharacter";
 import Button from "../../UI/Button/Button";
 import Header from "../../UI/Header/Header";
 import "./Menu.scss";
+import RankService from "../../../Services/RankService";
 
 interface IMenuProps {
 }
@@ -32,9 +33,27 @@ export default class Menu extends React.Component<IMenuProps> {
                         <li>Score 5 points if you answer with the tip</li>
                     </ul>
                 </div>
+                {this.getRanking()}
                 <Button content={"Start Game!"} link="/quiz" />
             </div>
         );
+    }
+
+    private getRanking(): React.ReactNode {
+        const ranking = RankService.getRanks();
+        if (ranking && ranking.length > 0) {
+            const ranks = () => ranking.map((rank, key) => <li key={key}>{rank.score}: {rank.name} - {rank.email}</li>);
+            return (
+                <div>
+                    <p>Local ranking:</p>
+                    <ol>
+                        {ranks()}
+                    </ol>
+                </div>
+            );
+        } else {
+            return undefined;
+        }
     }
 
     private async preChache() {

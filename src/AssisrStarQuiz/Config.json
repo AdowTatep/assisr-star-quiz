@@ -2,5 +2,5 @@
     "swApi": "https://swapi.co/api",
     "googleImages": "https://www.googleapis.com/customsearch/v1",
     "bingImages": "https://api.cognitive.microsoft.com/bing/v7.0/images/search",
-    "countdownLimitInSeconds": 2
+    "countdownLimitInSeconds": 120
 }

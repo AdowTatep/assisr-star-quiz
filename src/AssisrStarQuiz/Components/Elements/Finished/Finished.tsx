@@ -2,6 +2,7 @@ import React from "react";
 import IRank from "../../../Interfaces/IRank";
 import Button from "../../UI/Button/Button";
 import "./Finished.scss";
+import RankService from "../../../Services/RankService";
 
 interface IFinishedProps {
     score: number;
@@ -33,6 +34,7 @@ export default class Finished extends React.Component<IFinishedProps, IFinishedS
             <div className="elem-finished">
                 <h2>Finished!</h2>
                 <h1 className="score">Your score: {this.props.score}</h1>
+                {this.getPreviousRank()}
                 <form onSubmit={this.onSubmit.bind(this)}>
                     <p>Save your score:</p>
                     {this.state.validation.errors.length > 0 ? this.getErrors(this.state.validation.errors) : null}
@@ -62,6 +64,14 @@ export default class Finished extends React.Component<IFinishedProps, IFinishedS
                 </form>
             </div>
         );
+    }
+    private getPreviousRank(): React.ReactNode {
+        const rank = RankService.getPreviousRank();
+        if (rank) {
+            return (<h4 className="score">Previous score: {rank.score} - {rank.name}</h4>);
+        } else {
+            return null;
+        }
     }
     private getErrors(errors: string[]): React.ReactNode {
         const errorElements = () => errors.map((error, key) => <p key={key}>{error}</p>);
@@ -111,6 +121,10 @@ export default class Finished extends React.Component<IFinishedProps, IFinishedS
         e.preventDefault();
         if (this.props.onSubmit && this.state.validation.valid && this.state.validation.dirty) {
             this.props.onSubmit(this.state.rank);
+        } else if (!this.state.validation.dirty) {
+            const validation = this.state.validation;
+            validation.errors.push("You must fill the form");
+            this.setState({ validation });
         }
     }
 }
