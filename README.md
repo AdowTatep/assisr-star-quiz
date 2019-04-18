@@ -15,7 +15,7 @@ You have 2 minutes to correctly answer character names from star wars
 - Score 10 points if you answer without reading the tip
 - Score 5 points if you answer with the tip
 
-# Play at: https://adowtatep.github.io/assisr-star-quiz
+# Play at: https://assisrmatheus.github.io/assisr-star-quiz
 
 ## **How much points can you get? ⚔️**
 
