@@ -5,7 +5,7 @@
 	</a>
 </p>
 
-# assisr-start-quiz
+# assisr-star-quiz
 
 Do you like star wars? Test yourself with this quiz!
 
